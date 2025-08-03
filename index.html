@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dutch Tulip Species - A Complete Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            padding: 1rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #764ba2;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #764ba2;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: #764ba2;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(238, 90, 36, 0.3);
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(238, 90, 36, 0.4);
+        }
+
+        .main-content {
+            background: white;
+            margin: 2rem 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .section {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .species-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .species-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .species-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            border-color: #667eea;
+        }
+
+        .species-card h3 {
+            color: #764ba2;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .species-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .info-item {
+            background: #f8f9fa;
+            padding: 0.5rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .search-container {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 400px;
+            padding: 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .stats-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            padding: 1rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #999;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .species-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .filter-buttons {
+                gap: 0.5rem;
+            }
+            
+            .filter-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero {
+                padding: 2rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 2rem 0;
+            }
+            
+            .species-card {
+                padding: 1.5rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">Dutch Tulips</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#species">Species</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Dutch Tulip Species</h1>
+            <p>Discover the beauty and diversity of Holland's most iconic flowers</p>
+            <a href="#species" class="cta-button">Explore Species</a>
+        </div>
+    </section>
+
+    <div class="main-content">
+        <div class="container">
+            <section class="section" id="species">
+                <h2 class="section-title">Tulip Species Collection</h2>
+                
+                <div class="search-container">
+                    <input type="text" class="search-box" placeholder="Search tulip species..." id="searchInput">
+                </div>
+
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All Species</button>
+                    <button class="filter-btn" data-filter="early">Early Blooming</button>
+                    <button class="filter-btn" data-filter="mid">Mid Season</button>
+                    <button class="filter-btn" data-filter="late">Late Blooming</button>
+                </div>
+
+                <div class="species-grid" id="speciesGrid">
+                    <!-- Species cards will be populated by JavaScript -->
+                </div>
+            </section>
+        </div>
+
+        <section class="stats-section">
+            <div class="container">
+                <h2 class="section-title">Tulip Statistics</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number" id="totalSpecies">0</span>
+                        <span>Total Species</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">3000+</span>
+                        <span>Varieties Worldwide</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">400+</span>
+                        <span>Years of Cultivation</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">2.3B</span>
+                        <span>Bulbs Exported Annually</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Dutch Tulip Species Guide. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="speciesModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <div id="modalContent">
+                <!-- Modal content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tulip species data
+        const tulipSpecies = [
+            {
+                name: "Tulipa gesneriana",
+                commonName: "Garden Tulip",
+                height: "20-70 cm",
+                bloomTime: "mid",
+                colors: "Various",
+                origin: "Central Asia",
+                description: "The most common garden tulip, available in numerous colors and forms. This species is the ancestor of most modern tulip cultivars.",
+                features: "Large cup-shaped flowers, sturdy stems, excellent for gardens and cut flowers"
+            },
+            {
+                name: "Tulipa kaufmanniana",
+                commonName: "Waterlily Tulip",
+                height: "10-25 cm",
+                bloomTime: "early",
+                colors: "White, yellow, red",
+                origin: "Turkestan",
+                description: "Early blooming species with star-shaped flowers that open wide in sunlight, resembling water lilies.",
+                features: "Weather resistant, naturalizes well, perfect for rock gardens"
+            },
+            {
+                name: "Tulipa fosteriana",
+                commonName: "Emperor Tulip",
+                height: "20-45 cm",
+                bloomTime: "early",
+                colors: "Red, orange, yellow",
+                origin: "Central Asia",
+                description: "Large, bold flowers that bloom early in spring. Known for their impressive size and vibrant colors.",
+                features: "Very large flowers, strong stems, excellent for forcing indoors"
+            },
+            {
+                name: "Tulipa greigii",
+                commonName: "Greig's Tulip",
+                height: "15-30 cm",
+                bloomTime: "mid",
+                colors: "Red, orange, pink",
+                origin: "Turkestan",
+                description: "Distinguished by mottled or striped foliage and goblet-shaped flowers. Very decorative leaves.",
+                features: "Distinctive mottled leaves, compact growth, long-lasting blooms"
+            },
+            {
+                name: "Tulipa darwin",
+                commonName: "Darwin Tulip",
+                height: "45-75 cm",
+                bloomTime: "late",
+                colors: "Various",
+                origin: "Garden hybrid",
+                description: "Tall, elegant tulips that bloom late in the season. Classic egg-shaped flowers on strong stems.",
+                features: "Very tall stems, perfect for cutting, weather resistant"
+            },
+            {
+                name: "Tulipa triumph",
+                commonName: "Triumph Tulip",
+                height: "30-50 cm",
+                bloomTime: "mid",
+                colors: "Various",
+                origin: "Garden hybrid",
+                description: "The largest group of tulips, blooming between early and late varieties. Very reliable and sturdy.",
+                features: "Strong stems, wide color range, excellent garden performance"
+            },
+            {
+                name: "Tulipa viridiflora",
+                commonName: "Viridiflora Tulip",
+                height: "30-50 cm",
+                bloomTime: "late",
+                colors: "Green with other colors",
+                origin: "Garden hybrid",
+                description: "Unique tulips with green markings or flames on the petals, creating a distinctive appearance.",
+                features: "Unique green coloring, long-lasting, excellent cut flowers"
+            },
+            {
+                name: "Tulipa parrot",
+                commonName: "Parrot Tulip",
+                height: "35-60 cm",
+                bloomTime: "late",
+                colors: "Various",
+                origin: "Garden hybrid",
+                description: "Exotic tulips with fringed, ruffled, or feathered petals that create a dramatic appearance.",
+                features: "Fringed petals, very decorative, unique flower form"
+            },
+            {
+                name: "Tulipa lily-flowered",
+                commonName: "Lily-flowered Tulip",
+                height: "40-60 cm",
+                bloomTime: "late",
+                colors: "Various",
+                origin: "Garden hybrid",
+                description: "Elegant tulips with pointed petals that curve outward, resembling lilies in shape.",
+                features: "Pointed petals, graceful form, excellent for arrangements"
+            },
+            {
+                name: "Tulipa double early",
+                commonName: "Double Early Tulip",
+                height: "25-40 cm",
+                bloomTime: "early",
+                colors: "Various",
+                origin: "Garden hybrid",
+                description: "Full, peony-like double flowers that bloom early in the season. Very showy and long-lasting.",
+                features: "Double flowers, early blooming, long-lasting blooms"
+            },
+            {
+                name: "Tulipa double late",
+                commonName: "Double Late Tulip",
+                height: "35-60 cm",
+                bloomTime: "late",
+                colors: "Various",
+                origin: "Garden hybrid",
+                description: "Large, full double flowers that bloom late in the season. Also known as peony-flowered tulips.",
+                features: "Very large double flowers, late season, excellent cut flowers"
+            },
+            {
+                name: "Tulipa single early",
+                commonName: "Single Early Tulip",
+                height: "25-40 cm",
+                bloomTime: "early",
+                colors: "Various",
+                origin: "Garden hybrid",
+                description: "Classic cup-shaped tulips that bloom early in spring. Reliable and weather-resistant.",
+                features: "Early blooming, weather resistant, classic tulip shape"
+            }
+        ];
+
+        // DOM elements
+        const speciesGrid = document.getElementById('speciesGrid');
+        const searchInput = document.getElementById('searchInput');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const modal = document.getElementById('speciesModal');
+        const modalContent = document.getElementById('modalContent');
+        const closeModal = document.getElementById('closeModal');
+        const totalSpeciesCount = document.getElementById('totalSpecies');
+
+        let currentFilter = 'all';
+        let searchTerm = '';
+
+        // Initialize the page
+        function init() {
+            renderSpecies();
+            updateTotalSpecies();
+            setupEventListeners();
+            animateStats();
+        }
+
+        // Render species cards
+        function renderSpecies() {
+            const filteredSpecies = tulipSpecies.filter(species => {
+                const matchesFilter = currentFilter === 'all' || species.bloomTime === currentFilter;
+                const matchesSearch = species.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                    species.commonName.toLowerCase().includes(searchTerm.toLowerCase());
+                return matchesFilter && matchesSearch;
+            });
+
+            speciesGrid.innerHTML = filteredSpecies.map(species => `
+                <div class="species-card" data-species="${species.name}">
+                    <h3>${species.commonName}</h3>
+                    <p><em>${species.name}</em></p>
+                    <div class="species-info">
+                        <div class="info-item">
+                            <span class="info-label">Height:</span> ${species.height}
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Bloom Time:</span> ${species.bloomTime}
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Colors:</span> ${species.colors}
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Origin:</span> ${species.origin}
+                        </div>
+                    </div>
+                    <p>${species.description}</p>
+                </div>
+            `).join('');
+
+            // Add click listeners to cards
+            document.querySelectorAll('.species-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const speciesName = card.dataset.species;
+                    showSpeciesModal(speciesName);
+                });
+            });
+        }
+
+        // Show species modal
+        function showSpeciesModal(speciesName) {
+            const species = tulipSpecies.find(s => s.name === speciesName);
+            if (!species) return;
+
+            modalContent.innerHTML = `
+                <h2>${species.commonName}</h2>
+                <h3><em>${species.name}</em></h3>
+                <div class="species-info" style="margin: 1rem 0;">
+                    <div class="info-item">
+                        <span class="info-label">Height:</span> ${species.height}
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Bloom Time:</span> ${species.bloomTime}
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Colors:</span> ${species.colors}
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Origin:</span> ${species.origin}
+                    </div>
+                </div>
+                <p><strong>Description:</strong> ${species.description}</p>
+                <p><strong>Key Features:</strong> ${species.features}</p>
+            `;
+
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close modal
+        function closeSpeciesModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Update total species count
+        function updateTotalSpecies() {
+            const filteredCount = tulipSpecies.filter(species => {
+                const matchesFilter = currentFilter === 'all' || species.bloomTime === currentFilter;
+                const matchesSearch = species.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                    species.commonName.toLowerCase().includes(searchTerm.toLowerCase());
+                return matchesFilter && matchesSearch;
+            }).length;
+
+            totalSpeciesCount.textContent = filteredCount;
+        }
+
+        // Animate statistics
+        function animateStats() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.textContent);
+                if (isNaN(target)) return;
+                
+                let current = 0;
+                const increment = target / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    stat.textContent = Math.floor(current);
+                }, 30);
+            });
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Search functionality
+            searchInput.addEventListener('input', (e) => {
+                searchTerm = e.target.value;
+                renderSpecies();
+                updateTotalSpecies();
+            });
+
+            // Filter buttons
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    currentFilter = button.dataset.filter;
+                    renderSpecies();
+                    updateTotalSpecies();
+                });
+            });
+
+            // Modal close events
+            closeModal.addEventListener('click', closeSpeciesModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeSpeciesModal();
+                }
+            });
+
+            // Keyboard events
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.style.display === 'block') {
+                    closeSpeciesModal();
+                }
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Header background change on scroll
+            window.addEventListener('scroll', () => {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.style.background = 'rgba(255, 255, 255, 0.98)';
+                } else {
+                    header.style.background = 'rgba(255, 255, 255, 0.95)';
+                }
+            });
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
